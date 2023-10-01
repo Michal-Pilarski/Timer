@@ -3,6 +3,7 @@ import bext, time, keyboard
 os.system("mode con cols=63 lines=15")
 bext.title('Timer')
 
+
 hours_first_row = 0
 hours_second_row = 0
 
@@ -54,7 +55,8 @@ while True:
     text += f'{left_align} {numbers[hours_first_row][1]} {numbers[hours_second_row][1]} * {numbers[minutes_first_row][1]} {numbers[minutes_second_row][1]} * {numbers[seconds_first_row][1]} {numbers[seconds_second_row][1]} \n'
     text += f'{left_align} {numbers[hours_first_row][2]} {numbers[hours_second_row][2]} * {numbers[minutes_first_row][2]} {numbers[minutes_second_row][2]} * {numbers[seconds_first_row][2]} {numbers[seconds_second_row][2]} \n'
     print(text)
-    print(f'{left_align} Ctrl + C aby wyłączyć')
+    print(f'{left_align} Press Ctrl + C to exit')
+    print(f'{left_align} Press Ctrl + Shift to stop')
 
     # Seconds
     seconds_second_row += 1
@@ -78,6 +80,9 @@ while True:
         hours_second_row = 0
         hours_first_row += 1
 
+    if(keyboard.is_pressed('ctrl+shift')):
+        print(f'{left_align} Press Space to resume')
+        keyboard.wait('space')
 
     try:
         time.sleep(1)
